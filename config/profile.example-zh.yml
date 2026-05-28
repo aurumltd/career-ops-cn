@@ -1,0 +1,83 @@
+# Career-Ops 个人配置 — 中国市场示例
+# 复制此文件为 config/profile.yml 然后填入你的个人信息
+# 这是整个系统所有模式的单一数据源
+
+# 说明：
+# full_name: 你的全名，会出现在生成的 PDF 简历上
+# email: 联系邮箱
+# location: 你期望工作的城市
+# target_roles: 你的目标职位，系统会根据这个评分匹配度
+# narrative: 你的自我介绍，亮点，项目证明要点
+# compensation: 你的薪资预期范围
+
+candidate:
+  full_name: "林澈"
+  email: "candidate@example.invalid"
+  phone: "000-0000-0000"  # 示例号码，请替换为真实手机号
+  location: "上海市"
+  wechat: "example-candidate"  # 可选，微信联系方式
+  linkedin: "linkedin.com/in/example-candidate-cn"  # 可选
+  portfolio_url: "https://example.invalid"  # 你的作品集网址
+  github: "github.com/example-candidate-cn"  # GitHub 主页
+
+  # (可选) Canva 简历设计 ID，用于 /career-ops pdf 生成可视化简历
+  # 在 Canva 设计 URL 中找到：https://www.canva.com/design/DAxxxxxxx/...
+  # ID 以 D 开头，共 11 个字符。
+  # canva_resume_design_id: "DAxxxxxxxxx"
+
+language:
+  modes_dir: "modes/zh"
+
+target_roles:
+  # 你的北极星目标 — 系统会优化匹配这些职位
+  primary:
+    - "高级AI算法工程师"
+    - "大模型应用开发工程师"
+  # 原型帮助评估系统打分匹配度
+  archetypes:
+    - name: "AI算法工程师"
+      level: "高级/资深"
+      fit: "primary"        # primary = 梦想职位, secondary = 合适, adjacent = 拓展尝试
+    - name: "AI产品经理"
+      level: "高级"
+      fit: "secondary"
+    - name: "解决方案架构师"
+      level: "中高级"
+      fit: "adjacent"
+
+narrative:
+  # 你的专业 headline (一行)
+  headline: "专注大模型应用开发，从数据处理到部署全栈"
+  # 你的离职故事 — 什么让你与众不同
+  exit_story: "在大厂有 5 年 AI 落地经验，参与过多个千万级用户项目，现在寻找更有挑战性的大模型创业机会。"
+  # 你的 Top 3-5 核心竞争力
+  superpowers:
+    - "端到端大模型微调与部署"
+    - "快速原型开发（想法上线 2 周内）"
+    - "跨团队沟通协作"
+  # 关键项目案例 — 带可衡量影响力的项目
+  key_projects:
+    - name: "大模型推理服务优化"
+      url: "https://github.com/yourname/project"
+      highlight: "推理延迟降低 40%，QPS 提升 2.5 倍"
+    - name: "RAG 知识库系统"
+      url: "https://yourblog.com/rag-optimization"
+      highlight: "百万级文档检索准确率提升 25%"
+
+compensation:
+  target_range: "30W-50W"     # 你的目标年薪（税前）
+  currency: "CNY"             # 人民币
+  minimum: "25W"              # 最低接受底线
+  location_flexibility: "接受远程/混合办公，也可以现场"
+
+location:
+  country: "中国"
+  city: "上海"
+  timezone: "CST"
+  # 期望工作城市优先
+  # preferred_cities: ["上海", "北京", "杭州", "深圳"]
+  # 签证状态：国内求职一般不需要 sponsorship
+  visa_status: "不需要 sponsorship"
+
+cv:
+  output_format: "html"

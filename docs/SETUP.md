@@ -1,5 +1,7 @@
 # Setup Guide
 
+If you are targeting Mainland China roles and want Simplified Chinese output, use [docs/SETUP-zh.md](docs/SETUP-zh.md) plus `config/profile.example-zh.yml` and `templates/portals.cn.example.yml`.
+
 ## Prerequisites
 
 - [Claude Code](https://claude.ai/code) installed and configured

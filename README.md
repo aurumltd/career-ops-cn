@@ -1,39 +1,13 @@
-# Career-Ops
+# career-ops 中国版
 
-[English](README.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [한국어](README.ko-KR.md) | [日本語](README.ja.md) | [Українська](README.ua.md) | [Русский](README.ru.md) | [繁體中文](README.zh-TW.md)
+> 基于 Claude Code 的 AI 驱动求职自动化工作流 — 评估offer、生成简历、自动扫岗、追踪申请，专为中国求职市场本地化定制。
 
-<p align="center">
-  <a href="https://x.com/santifer"><img src="docs/hero-banner.jpg" alt="Career-Ops — Multi-Agent Job Search System" width="800"></a>
-</p>
+[中国本地化版](README.md) | [English original](README.en.md) | [原版简中翻译](README.cn.md)
 
-<p align="center">
-  <em>I spent months applying to jobs the hard way. So I engineered the system I wish I had.</em><br>
-  Companies use AI to filter candidates. <strong>I just gave candidates AI to <em>choose</em> companies.</strong><br>
-  <em>Now it's open source.</em>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Claude_Code-000?style=flat&logo=anthropic&logoColor=white" alt="Claude Code">
-  <img src="https://img.shields.io/badge/OpenCode-111827?style=flat&logo=terminal&logoColor=white" alt="OpenCode">
-  <img src="https://img.shields.io/badge/Gemini_CLI-4285F4?style=flat&logo=google&logoColor=white" alt="Gemini CLI">
-  <img src="https://img.shields.io/badge/Codex_(soon)-6B7280?style=flat&logo=openai&logoColor=white" alt="Codex">
-  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js">
-  <img src="https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white" alt="Go">
-  <img src="https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white" alt="Playwright">
-  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT">
-  <a href="TRADEMARK.md"><img src="https://img.shields.io/badge/Trademark-Policy-blue.svg" alt="Trademark Policy"></a>
-  <a href="https://discord.gg/8pRpHETxa4"><img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord"></a>
-  <br>
-  <img src="https://img.shields.io/badge/EN-blue?style=flat" alt="EN">
-  <img src="https://img.shields.io/badge/ES-red?style=flat" alt="ES">
-  <img src="https://img.shields.io/badge/DE-grey?style=flat" alt="DE">
-  <img src="https://img.shields.io/badge/FR-blue?style=flat" alt="FR">
-  <img src="https://img.shields.io/badge/PT--BR-green?style=flat" alt="PT-BR">
-  <img src="https://img.shields.io/badge/KO-white?style=flat" alt="KO">
-  <img src="https://img.shields.io/badge/JA-red?style=flat" alt="JA">
-  <img src="https://img.shields.io/badge/ZH--CN-red?style=flat" alt="ZH-CN">
-  <img src="https://img.shields.io/badge/ZH--TW-blue?style=flat" alt="ZH-TW">
-</p>
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white)](https://playwright.dev/)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-000?style=flat&logo=anthropic&logoColor=white)](https://claude.ai/code)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
@@ -41,299 +15,283 @@
   <img src="docs/demo.gif" alt="Career-Ops Demo" width="800">
 </p>
 
-<p align="center"><strong>740+ job listings evaluated · 100+ personalized CVs · 1 dream role landed</strong></p>
+## 这是什么
 
-<p align="center"><a href="https://discord.gg/8pRpHETxa4"><img src="https://img.shields.io/badge/Join_the_community-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a></p>
+career-ops 将 Claude Code 变成你的全职求职指挥中心。不用手动在 spreadsheet 跟踪申请，AI 驱动的求职流水线：
 
-## What Is This
+- **智能评估 offer** — 结构化 A-F 评分体系（10个加权维度）
+- **生成 ATS 友好 PDF 简历** — 根据职位描述定制简历，关键词优化
+- **自动扫描招聘门户** — 直接访问公司招聘页，提取职位
+- **批量处理** — 并行评估多个职位
+- **统一追踪** — 完整性检查，去重，状态归一化
 
-Career-Ops ([career-ops.org](https://career-ops.org), also known as **careerops**) turns any AI coding CLI into a full job search command center. Instead of manually tracking applications in a spreadsheet, you get an AI-powered pipeline that:
+> **重要提示：** 这**不是**海投工具。career-ops 是一个过滤器——帮你从数百个职位中找到值得你花时间的少数几个。系统强烈不建议申请评分低于 4.0/5 的职位。你的时间宝贵，猎头的时间也宝贵。投递前务必自己审核。
 
-- **Evaluates offers** with a structured A-F scoring system (10 weighted dimensions)
-- **Generates tailored PDFs** -- ATS-optimized CVs customized per job description
-- **Scans portals** automatically (Greenhouse, Ashby, Lever, company pages)
-- **Processes in batch** -- evaluate 10+ offers in parallel with sub-agents
-- **Tracks everything** in a single source of truth with integrity checks
+career-ops 是 Agentic 的：Claude Code 使用 Playwright 导航招聘页面，根据你的简历和职位描述评估匹配度，自适应调整简历。
 
-> **Important: This is NOT a spray-and-pray tool.** Career-ops is a filter -- it helps you find the few offers worth your time out of hundreds. The system strongly recommends against applying to anything scoring below 4.0/5. Your time is valuable, and so is the recruiter's. Always review before submitting.
+## 功能特性
 
-Career-ops is agentic: Claude Code navigates career pages with Playwright, evaluates fit by reasoning about your CV vs the job description (not keyword matching), and adapts your resume per listing.
+| 功能 | 描述 |
+|---------|-------------|
+| **自动流水线** | 粘贴 URL，获得完整评估 + PDF + 追踪记录 |
+| **六模块评估** | 职位摘要、CV 匹配、职级策略、薪酬调研、文化信号、面试准备（STAR+R）|
+| **面试故事银行** | 积累 STAR+反思故事，5-10 个核心故事回答任何行为面试问题 |
+| **谈判脚本** | 薪资谈判框架，地域溢价反驳，offer 竞争杠杆利用 |
+| **ATS PDF 生成** | 注入关键词，专业排版设计 |
+| **门户扫描器** | 预配置 **60+ 中国头部科技公司 + 15 家游戏公司**，支持主流招聘网站搜索 |
+| **批量处理** | 使用子代理并行评估 |
+| **中文本地化** | 完整中文界面，适配中国求职市场生态 |
+| **人机协作** | AI 评估推荐，最终决策由你掌控。系统从不自动提交申请 |
+| **流水线完整性** | 自动合并、去重、状态归一化、健康检查 |
 
-> **Heads up: the first evaluations won't be great.** The system doesn't know you yet. Feed it context -- your CV, your career story, your proof points, your preferences, what you're good at, what you want to avoid. The more you nurture it, the better it gets. Think of it as onboarding a new recruiter: the first week they need to learn about you, then they become invaluable.
-
-Built by someone who used it to evaluate 740+ job offers, generate 100+ tailored CVs, and land a Head of Applied AI role. [Read the full case study](https://santifer.io/career-ops-system).
-
-## Features
-
-| Feature                  | Description                                                                                                                              |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| **Auto-Pipeline**        | Paste a URL, get a full evaluation + PDF + tracker entry                                                                                 |
-| **6-Block Evaluation**   | Role summary, CV match, level strategy, comp research, personalization, interview prep (STAR+R)                                          |
-| **Interview Story Bank** | Accumulates STAR+Reflection stories across evaluations -- 5-10 master stories that answer any behavioral question                        |
-| **Negotiation Scripts**  | Salary negotiation frameworks, geographic discount pushback, competing offer leverage                                                    |
-| **ATS PDF Generation**   | Keyword-injected CVs with Space Grotesk + DM Sans design                                                                                 |
-| **Portal Scanner**       | 45+ companies pre-configured (Anthropic, OpenAI, ElevenLabs, Retool, n8n...) + custom queries across Ashby, Greenhouse, Lever, Wellfound |
-| **Batch Processing**     | Parallel evaluation with `claude -p` workers                                                                                             |
-| **Dashboard TUI**        | Terminal UI to browse, filter, and sort your pipeline                                                                                    |
-| **Human-in-the-Loop**    | AI evaluates and recommends, you decide and act. The system never submits an application -- you always have the final call               |
-| **Pipeline Integrity**   | Automated merge, dedup, status normalization, health checks                                                                              |
-
-## Quick Start
+## 快速开始
 
 ```bash
-# 1. Clone and install
-git clone https://github.com/santifer/career-ops.git
-cd career-ops && npm install
-npx playwright install chromium   # Required for PDF generation
+# 1. 克隆并安装依赖
+git clone https://github.com/aurumltd/career-ops-cn.git
+cd career-ops-cn && npm install
+npx playwright install chromium   # PDF 生成和网页扫描需要
 
-# 2. Check setup
-npm run doctor                     # Validates all prerequisites
+# 2. 检查安装
+npm run doctor                     # 验证所有前置条件
 
-# 3. Configure
-cp config/profile.example.yml config/profile.yml  # Edit with your details
-cp templates/portals.example.yml portals.yml       # Customize companies
+# 3. 配置
+cp config/profile.example-zh.yml config/profile.yml   # 编辑填入你的个人信息
+cp templates/portals.cn.example.yml portals.yml        # 中国市场招聘门户模板
 
-# 4. Add your CV
-# Create cv.md in the project root with your CV in markdown
+# 4. 添加你的简历
+# 在项目根目录创建 cv.md，用 markdown 格式写你的简历
 
-# 5. Personalize with Claude
-claude   # Open Claude Code in this directory
+# 5. 在 Claude Code 中开始使用
+claude   # 在当前目录打开 Claude Code
 
-# Then ask Claude to adapt the system to you:
-# "Change the archetypes to backend engineering roles"
-# "Translate the modes to English"
-# "Add these 5 companies to portals.yml"
-# "Update my profile with this CV I'm pasting"
+# 然后让 Claude 帮你完成初始化：
+# "帮我完成 career-ops-cn 初始化"
 
-# 6. Start using
-# Paste a job URL or run /career-ops
+# 6. 使用
+# 直接粘贴职位 URL 或者 /career-ops-cn
 ```
 
-> **The system is designed to be customized by Claude itself.** Modes, archetypes, scoring weights, negotiation scripts -- just ask Claude to change them. It reads the same files it uses, so it knows exactly what to edit.
+> **系统设计就是让 Claude 自己自定义。** 模式、原型、评分权重、谈判脚本——你只需要让 Claude 改，它能读懂自己用的文件，知道该怎么改。
 
-See [docs/SETUP.md](docs/SETUP.md) for the full setup guide.
+详见 [docs/SETUP-zh.md](docs/SETUP-zh.md) 完整安装指南。
 
-## Gemini CLI Integration
+## 使用方式
 
-Career-ops supports [Gemini CLI](https://github.com/google-gemini/gemini-cli) natively — the same way it supports Claude Code and OpenCode. All 15 slash commands are available, using the same `modes/*.md` evaluation logic.
-
-### Option A — Native Gemini CLI (Recommended)
-
-```bash
-# 1. Install Gemini CLI
-npm install -g @google/gemini-cli
-# or: npx @google/gemini-cli --version
-
-# 2. Authenticate (free — uses your Google account)
-gemini auth
-
-# 3. Run in the career-ops directory
-cd career-ops
-gemini
-
-# 4. Use slash commands just like Claude Code
-/career-ops "Senior AI Engineer at Anthropic..."
-/career-ops-evaluate --file ./jds/openai.txt
-/career-ops-scan
-/career-ops-pdf
-/career-ops-tracker
-```
-
-The `GEMINI.md` file is auto-loaded as context. All 15 commands are defined in `.gemini/commands/*.toml`.
-
-### Option B — Standalone API Script (No CLI install needed)
-
-```bash
-# 1. Get a free API key at https://aistudio.google.com/apikey
-cp .env.example .env
-# Edit .env → set GEMINI_API_KEY=your_key_here
-
-# 2. Install dependencies
-npm install
-
-# 3. Evaluate a job description
-node gemini-eval.mjs "We are looking for a Senior AI Engineer..."
-node gemini-eval.mjs --file ./jds/my-job.txt
-npm run gemini:eval -- "JD text here"
-```
-
-> **Free tier:** Both options work without billing. Native CLI uses Google OAuth; the API script uses `gemini-2.5-flash` (15 RPM, 1M tokens/day free).
-
-## Usage
-
-Career-ops is a single slash command with multiple modes:
+career-ops-cn 是一个斜杠命令，支持多种模式：
 
 ```
-/career-ops                → Show all available commands
-/career-ops {paste a JD}   → Full auto-pipeline (evaluate + PDF + tracker)
-/career-ops scan           → Scan portals for new offers
-/career-ops pdf            → Generate ATS-optimized CV
-/career-ops batch          → Batch evaluate multiple offers
-/career-ops tracker        → View application status
-/career-ops apply          → Fill application forms with AI
-/career-ops pipeline       → Process pending URLs
-/career-ops contacto       → LinkedIn outreach message
-/career-ops deep           → Deep company research
-/career-ops training       → Evaluate a course/cert
-/career-ops project        → Evaluate a portfolio project
+/career-ops-cn                → 显示所有可用命令
+/career-ops-cn {粘贴JD/URL}   → 完整自动流水线（评估 + PDF + 追踪）
+/career-ops-cn scan           → 扫描招聘门户发现新职位
+/career-ops-cn pdf            → 生成 ATS 优化 PDF 简历
+/career-ops-cn batch          → 批量并行评估多个职位
+/career-ops-cn tracker        → 查看申请状态
+/career-ops-cn apply          → 实时填写申请表单 AI 助手
+/career-ops-cn pipeline       → 处理待处理 URL 收件箱
+/career-ops-cn contacto       → LinkedIn 拓展私信草稿
+/career-ops-cn deep           → 深度公司调研
+/career-ops-cn training       → 评估课程/证书
+/career-ops-cn project        → 评估作品集项目
 ```
 
-Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
+或者直接粘贴职位 URL 或描述——career-ops 自动检测，运行完整流水线。
 
-## How It Works
+## 预配置：同时支持中国本地求职 + 全球远程工作
+
+本项目**保留原版所有欧美公司配置**，同时添加完整中国市场本地化支持，你可以同时搜索：
+
+### 🇨🇳 中国市场 — 已添加 70+ 中国头部科技公司
+
+**互联网巨头：** 字节跳动、阿里巴巴、腾讯、百度、美团、拼多多、京东、网易、哔哩哔哩、小红书、快手
+
+**AI 与大模型创业：** 智谱 AI、深度求索 DeepSeek、通义千问、文心一言、豆包、MiniMax、商汤科技、云从科技、旷视科技、摩尔线程、沐曦、聆心智能
+
+**云计算与芯片：** 华为（昇腾 AI）、小米、OPPO、Vivo、寒武纪、阿里云、腾讯云、百度智能云
+
+**自动驾驶与新能源：** 小鹏汽车、理想汽车、蔚来、比亚迪、特斯拉中国、小马智行、文远知行
+
+**游戏公司：** 腾讯游戏、网易游戏、米哈游、莉莉丝游戏、叠纸游戏、鹰角网络、巨人网络、完美世界、心动网络（TapTap）、灵犀互娱、库洛游戏、散爆网络、中手游、FunPlus 趣加、朝夕光年
+
+**金融科技：** 蚂蚁集团、微信支付、陆金所
+
+### 已添加的中国主流招聘网站搜索
+
+- **前程无忧 51job** — 全品类技术岗、算法、前后端开发、产品经理
+- **智联招聘** — 大厂社招、中高端技术岗
+- **BOSS 直聘** — 互联网大厂直聊、创业团队
+- **拉勾网** — 互联网垂直招聘、北上广深杭精选
+- **猎聘** — 资深专家、技术管理、总监岗
+- **牛客网** — 校招/秋招/春招、应届生求职
+- **脉脉** — 职场人脉、内推机会
+
+### 🌍 全球远程
+
+**本项目保留原版项目所有欧美科技公司配置**：Anthropic, OpenAI, Mistral, Cohere, ElevenLabs, Retool, n8n 等 100+ 公司，可以同时搜索远程工作机会。
+
+## 工作原理
 
 ```
-You paste a job URL or description
+你粘贴职位 URL 或描述
         │
         ▼
-┌──────────────────┐
-│  Archetype       │  Classifies: LLMOps / Agentic / PM / SA / FDE / Transformation
-│  Detection       │
-└────────┬─────────┘
+┌──────────────┐
+│   原型检测   │  分类：LLMOps / Agentic / 产品 / 架构 / 现场工程师 / 转型
+└────────┬─────┘
          │
-┌────────▼─────────┐
-│  A-F Evaluation  │  Match, gaps, comp research, STAR stories
-│  (reads cv.md)   │
-└────────┬─────────┘
+         ▼
+┌──────────────┐
+│  A-F 评分评估 │  匹配度、目标对齐、薪酬、文化信号、风险预警
+│  (读取 cv.md) │
+└────────┬─────┘
          │
-    ┌────┼────┐
-    ▼    ▼    ▼
- Report  PDF  Tracker
-  .md   .pdf   .tsv
+     ┌────┼────┐
+     ▼    ▼    ▼
+  报告   PDF  追踪
+  .md   .pdf  .tsv
 ```
 
-## Pre-configured Portals
-
-The scanner comes with **45+ companies** ready to scan and **19 search queries** across major job boards. Copy `templates/portals.example.yml` to `portals.yml` and add your own:
-
-**AI Labs:** Anthropic, OpenAI, Mistral, Cohere, LangChain, Pinecone
-**Voice AI:** ElevenLabs, PolyAI, Parloa, Hume AI, Deepgram, Vapi, Bland AI
-**AI Platforms:** Retool, Airtable, Vercel, Temporal, Glean, Arize AI
-**Contact Center:** Ada, LivePerson, Sierra, Decagon, Talkdesk, Genesys
-**Enterprise:** Salesforce, Twilio, Gong, Dialpad
-**LLMOps:** Langfuse, Weights & Biases, Lindy, Cognigy, Speechmatics
-**Automation:** n8n, Zapier, Make.com
-**European:** Factorial, Attio, Tinybird, Clarity AI, Travelperk
-
-**Job boards searched:** Ashby, Greenhouse, Lever, Wellfound, Workable, RemoteFront
-
-By default `node scan.mjs` (a.k.a. `npm run scan`) trusts what each ATS feed returns. Some companies leave stale postings in their public API even after the role is closed, so those expired entries can leak into `pipeline.md`. Pass `--verify` to launch Playwright after the API pass and drop expired postings before they hit the pipeline:
-
-```bash
-node scan.mjs --verify          # zero-token discovery + Playwright liveness check
-```
-
-The verification is sequential and only runs against new offers (after dedup), so the cost stays bounded.
-
-## Dashboard TUI
-
-The built-in terminal dashboard lets you browse your pipeline visually:
-
-```bash
-cd dashboard
-go build -o career-dashboard .
-./career-dashboard --path ..
-```
-
-Features: 6 filter tabs, 4 sort modes, grouped/flat view, lazy-loaded previews, inline status changes.
-
-## Project Structure
+## 项目结构
 
 ```
-career-ops/
-├── AGENTS.md                    # Canonical agent instructions (all CLIs)
-├── CLAUDE.md                    # Claude Code wrapper (imports AGENTS.md)
-├── cv.md                        # Your CV (create this)
-├── article-digest.md            # Your proof points (optional)
+career-ops-cn/
+├── CLAUDE.md                    # Agent 指令
+├── cv.md                        # 你的简历（在这里创建）
+├── article-digest.md            # 你的项目案例摘要（可选）
+├── portals.yml                  # 扫描配置（已预配置中国公司）
 ├── config/
-│   └── profile.example.yml      # Template for your profile
-├── modes/                       # 14 skill modes
-│   ├── _shared.md               # Shared context (customize this)
-│   ├── oferta.md                # Single evaluation
-│   ├── pdf.md                   # PDF generation
-│   ├── scan.md                  # Portal scanner
-│   ├── batch.md                 # Batch processing
-│   └── ...
+│   └── profile.example.yml      # 个人配置模板
+├── modes/                       # 英文原版模式
+│   └── zh/                      # 👋 中文本地化模式
+│       ├── README.md
+│       ├── _shared.md           # 系统上下文
+│       ├── 评估.md              # 单个职位评估
+│       ├── 申请.md              # 实时申请助手
+│       ├── 流水线.md            # 待处理 URL 处理
+│       └── 扫描.md              # 门户扫描
 ├── templates/
-│   ├── cv-template.html         # ATS-optimized CV template
-│   ├── portals.example.yml      # Scanner config template
-│   └── states.yml               # Canonical statuses
+│   ├── cv-template.html         # ATS 简历 HTML 模板
+│   ├── portals.example.yml      # 扫描配置模板
+│   └── states.yml               # 标准状态定义
 ├── batch/
-│   ├── batch-prompt.md          # Self-contained worker prompt
-│   └── batch-runner.sh          # Orchestrator script
-├── dashboard/                   # Go TUI pipeline viewer
-├── data/                        # Your tracking data (gitignored)
-├── reports/                     # Evaluation reports (gitignored)
-├── output/                      # Generated PDFs (gitignored)
-├── fonts/                       # Space Grotesk + DM Sans
-├── docs/                        # Setup, customization, architecture
-└── examples/                    # Sample CV, report, proof points
+│   ├── batch-prompt.md          # 批量处理子代理提示
+│   └── batch-runner.sh          # 编排脚本
+├── dashboard/                   # Go TUI 流水线查看器
+├── data/                        # 你的追踪数据（gitignore）
+├── reports/                     # 评估报告（gitignore）
+├── output/                      # 生成 PDF（gitignore）
+└── fonts/                       # 字体文件
 ```
 
-## Tech Stack
+## 启用中文模式
 
-![Claude Code](https://img.shields.io/badge/Claude_Code-000?style=flat&logo=anthropic&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
-![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
-![Bubble Tea](https://img.shields.io/badge/Bubble_Tea-FF75B5?style=flat&logo=go&logoColor=white)
+在 `config/profile.yml` 中添加：
 
-- **Agent**: Claude Code with custom skills and modes
-- **PDF**: Playwright/Puppeteer + HTML template
-- **Scanner**: Playwright + Greenhouse API + WebSearch
-- **Dashboard**: Go + Bubble Tea + Lipgloss (Catppuccin Mocha theme)
-- **Data**: Markdown tables + YAML config + TSV batch files
+```yaml
+language:
+  modes_dir: modes/zh
+```
 
-## Also Open Source
+之后所有输出都会使用中文，适配中国求职市场。
 
-- **[cv-santiago](https://github.com/santifer/cv-santiago)** -- The portfolio website (santifer.io) with AI chatbot, LLMOps dashboard, and case studies. If you need a portfolio to showcase alongside your job search, fork it and make it yours.
+## 技术栈
 
-## About the Author
+- **Agent**: Claude Code 技能 + 子代理并行
+- **PDF 生成**: Playwright + HTML 模板
+- **扫描器**: Playwright 直接抓取 + 站点搜索
+- **仪表盘**: Go + Bubble Tea + Lipgloss（Catppuccin Mocha 主题）
+- **数据**: Markdown 表格 + YAML 配置 + TSV 批量文件
 
-I'm Santiago -- Head of Applied AI, former founder (built and sold a business that still runs with my name on it). I built career-ops to manage my own job search. It worked: I used it to land my current role.
+## 中国大厂官网爬虫 `scan-cn.mjs`
 
-My portfolio and other open source projects → [santifer.io](https://santifer.io)
+专为中国招聘市场优化的独立爬虫脚本，绕过第三方 ATS 直接访问大厂官网。
 
-## Star History
+已预配置 20 家中国头部科技公司招聘官网，通过 API 或 DOM 抓取职位信息。
 
-<a href="https://www.star-history.com/?repos=santifer%2Fcareer-ops&type=timeline&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=santifer/career-ops&type=timeline&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=santifer/career-ops&type=timeline&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=santifer/career-ops&type=timeline&legend=top-left" />
- </picture>
-</a>
+### 爬虫脚本使用
 
-## Disclaimer
+```bash
+# 单公司扫描
+npm run scan:cn -- bytedance
+npm run scan:cn -- tencent
+npm run scan:cn -- meituan
 
-**career-ops is a local, open-source tool — NOT a hosted service.** By using this software, you acknowledge:
+# 多公司扫描（已修复竞态问题，可并行）
+npm run scan:cn -- bytedance tencent meituan
 
-1. **You control your data.** Your CV, contact info, and personal data stay on your machine and are sent directly to the AI provider you choose (Anthropic, OpenAI, etc.). We do not collect, store, or have access to any of your data.
-2. **You control the AI.** The default prompts instruct the AI not to auto-submit applications, but AI models can behave unpredictably. If you modify the prompts or use different models, you do so at your own risk. **Always review AI-generated content for accuracy before submitting.**
-3. **You comply with third-party ToS.** You must use this tool in accordance with the Terms of Service of the career portals you interact with (Greenhouse, Lever, Workday, LinkedIn, etc.). Do not use this tool to spam employers or overwhelm ATS systems.
-4. **No guarantees.** Evaluations are recommendations, not truth. AI models may hallucinate skills or experience. The authors are not liable for employment outcomes, rejected applications, account restrictions, or any other consequences.
+# dry-run 模式（不写入文件，只打印结果）
+npm run scan:cn -- bytedance --dry-run
 
-See [LEGAL_DISCLAIMER.md](LEGAL_DISCLAIMER.md) for full details. This software is provided under the [MIT License](LICENSE) "as is", without warranty of any kind.
+# 调试模式（headless 浏览器 + 打印 API 响应结构 + 页面内容）
+npm run scan:cn -- bytedance --debug
 
-## Contributors
+# 列出支持的所有公司
+node scan-cn.mjs --list
+```
 
-<a href="https://github.com/santifer/career-ops/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=santifer/career-ops" />
-</a>
+### 调试指南
 
-Got hired using career-ops? [Share your story!](https://github.com/santifer/career-ops/issues/new?template=i-got-hired.yml)
+如果抓不到职位，先用 `--debug` 模式定位问题：
 
-## License & Trademark
+```bash
+npm run scan:cn -- bytedance --debug
+```
 
-The code is licensed under [MIT](LICENSE). The "career-ops" name and
-brand are governed by the [Trademark Policy](TRADEMARK.md) — permissive
-for community use, reserved for commercial product naming and
-endorsement.
+调试模式会输出：
+- 📡 所有捕获的 XHR/API 请求 URL
+- 🔍 命中 `apiPattern` 的请求详细结构（顶层字段、数组长度、首项字段）
+- 📄 页面 body 前 1000 字（判断是否真的加载了职位列表）
+- 🔗 页面前 20 个链接（含 job/position/recruit 的链接）
 
-## Let's Connect
+常见问题定位：
+1. **没抓到 API 请求** → 检查 `apiPattern` 正则是否匹配真实 URL
+2. **API 有请求但没提取到职位** → 检查数据路径是否匹配（如腾讯用 `data?.Data?.Posts`）
+3. **API 没数据但 DOM 有职位** → 检查 `selectors.jobItem` 是否匹配页面真实结构
+4. **需要可视化调试** → 可以用 `--headed` 参数启动可见浏览器
 
-[![Website](https://img.shields.io/badge/santifer.io-000?style=for-the-badge&logo=safari&logoColor=white)](https://santifer.io)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/santifer)
-[![X](https://img.shields.io/badge/X-000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/santifer)
-[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/8pRpHETxa4)
-[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hi@santifer.io)
+### 扩展新公司
+
+1. 在 `portals.yml` 的 `tracked_companies` 添加公司配置：
+   ```yaml
+   - name: 你的公司
+     enabled: true
+     careers_url: https://careers.yourcompany.com
+     market: cn
+     source_type: official
+   ```
+
+2. （可选）在 `scan-cn.mjs` 的 `ADAPTER_IMPLEMENTATIONS` 添加适配：
+   - `apiPattern`: API URL 正则
+   - `selectors`: DOM 选择器
+   - `buildUrl(job)`: 根据 job 对象构建详情页 URL
+   - `triggerList(page)`: 触发列表加载的操作
+
+3. 用 `--debug` 模式验证抓取效果
+
+## 自定义
+
+- **添加公司**：在 `portals.yml` 的 `tracked_companies` 添加
+- **调整关键词**：修改 `title_filter.positive`/`negative` 过滤职位
+- **改评分权重**：修改 `modes/zh/_shared.md`
+- **改个人偏好**：在 `modes/_profile.md` 添加你的职业原型
+
+## ⚠️ 使用原则 — 设计理念
+
+**本工具不是海投工具，而是你的「职位过滤器」** —— 帮你从数百个职位中筛选出少数真正值得投递的机会，节约你和招聘方双方的时间。
+
+系统遵循以下设计原则：
+
+- ✋ **AI 绝不自动提交申请** —— AI 可以帮你评估职位、定制简历、填写申请表单草稿，但「是否投递」的最终决定权**永远在你手中**。点击提交前一定会停止，由你审核后手动操作。
+- 🎯 **只推荐高匹配度职位** —— 如果综合评分低于 **4.0/5**，系统会明确建议你不要申请。你的时间宝贵，猎头的时间也宝贵。
+- 💯 **质量优先于数量** —— 精准投递 5 家匹配度高的公司，胜过泛泛海投 50 家不匹配的职位。系统会引导你聚焦少数优质机会。
+- 🤝 **尊重猎头的时间** —— 只推荐真正匹配你背景的职位，不发送垃圾申请浪费他人精力。
+
+## 许可证
+
+MIT License — 详见 [LICENSE](LICENSE)
+
+## 致谢
+
+基于 [santifer/career-ops](https://github.com/santifer/career-ops) 项目，针对中国求职市场进行了本地化改造，添加了完整中文支持和中国科技公司预配置。
+
+原作者 Santiago 用这个系统评估了 740+ 职位，生成了 100+ 定制简历，最终拿到了 Head of Applied AI 职位。感谢原作者的优秀工作！

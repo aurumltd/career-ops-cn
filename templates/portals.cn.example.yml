@@ -1,0 +1,252 @@
+# Portal Scanner Configuration — China Market Example
+# Copy this file to portals.yml when targeting Mainland China roles.
+#
+# This template is intentionally separate from templates/portals.example.yml so
+# the main upstream defaults stay intact while China-market users get a focused
+# starting point.
+
+title_filter:
+  positive:
+    - "AI"
+    - "ML"
+    - "LLM"
+    - "AIGC"
+    - "Agent"
+    - "大模型"
+    - "人工智能"
+    - "算法"
+    - "推荐"
+    - "搜索"
+    - "NLP"
+    - "语音"
+    - "多模态"
+    - "机器学习"
+    - "深度学习"
+    - "产品经理"
+    - "AI产品"
+    - "算法工程师"
+    - "机器学习工程师"
+    - "数据工程师"
+    - "后端开发"
+    - "平台工程师"
+    - "解决方案架构师"
+  negative:
+    - "实习"
+    - "应届"
+    - "校招"
+    - "Junior"
+    - "Intern"
+    - "销售"
+    - "客服"
+    - "行政"
+    - "财务"
+  seniority_boost:
+    - "高级"
+    - "资深"
+    - "专家"
+    - "负责人"
+    - "Senior"
+    - "Staff"
+    - "Lead"
+
+location_filter:
+  allow:
+    - "北京"
+    - "上海"
+    - "深圳"
+    - "杭州"
+    - "广州"
+    - "成都"
+    - "Remote"
+    - "远程"
+    - "混合"
+
+search_queries:
+  - name: BOSS 直聘 — AI/算法
+    query: 'site:zhipin.com "算法工程师" OR "AI产品经理" OR "大模型" OR "机器学习"'
+    enabled: true
+
+  - name: 拉勾 — AI/平台
+    query: 'site:lagou.com "大模型" OR "LLM" OR "平台工程师" OR "Agent"'
+    enabled: true
+
+  - name: 猎聘 — 中高级 AI 岗
+    query: 'site:liepin.com "资深 算法工程师" OR "AI 产品经理" OR "解决方案架构师"'
+    enabled: true
+
+  - name: 智联招聘 — AI/数据
+    query: 'site:zhaopin.com "机器学习工程师" OR "数据工程师" OR "推荐算法"'
+    enabled: true
+
+  - name: 前程无忧 — 大模型/后端
+    query: 'site:51job.com "大模型" OR "后端开发" OR "AI工程师"'
+    enabled: true
+
+tracked_companies:
+  - name: 字节跳动
+    careers_url: https://jobs.bytedance.com/experienced
+    scan_method: websearch
+    scan_query: 'site:jobs.bytedance.com/experienced "算法工程师" OR "大模型" OR "AI产品经理"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 腾讯
+    careers_url: https://careers.tencent.com/search.html
+    scan_method: websearch
+    scan_query: 'site:careers.tencent.com "算法" OR "混元" OR "推荐" OR "平台"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 阿里巴巴
+    careers_url: https://talent.alibaba.com
+    scan_method: websearch
+    scan_query: 'site:talent.alibaba.com "通义" OR "算法工程师" OR "AI产品经理"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 百度
+    careers_url: https://talent.baidu.com/jobs/social
+    scan_method: websearch
+    scan_query: 'site:talent.baidu.com "文心" OR "搜索" OR "推荐算法"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 美团
+    careers_url: https://zhaopin.meituan.com
+    scan_method: websearch
+    scan_query: 'site:zhaopin.meituan.com "算法工程师" OR "平台工程师" OR "AI"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 京东
+    careers_url: https://zhaopin.jd.com
+    scan_method: websearch
+    scan_query: 'site:zhaopin.jd.com "大模型" OR "算法工程师" OR "后端开发"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 拼多多
+    careers_url: https://careers.pinduoduo.com
+    scan_method: websearch
+    scan_query: 'site:careers.pinduoduo.com "机器学习" OR "推荐算法" OR "平台"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 小红书
+    careers_url: https://job.xiaohongshu.com
+    scan_method: websearch
+    scan_query: 'site:job.xiaohongshu.com "算法" OR "搜索" OR "推荐" OR "产品经理"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 快手
+    careers_url: https://campus.kuaishou.cn/recruit/social
+    scan_method: websearch
+    scan_query: 'site:kuaishou.cn/recruit "算法工程师" OR "多模态" OR "后端开发"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 网易
+    careers_url: https://hr.163.com
+    scan_method: websearch
+    scan_query: 'site:hr.163.com "AI" OR "机器学习" OR "平台"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 哔哩哔哩
+    careers_url: https://jobs.bilibili.com
+    scan_method: websearch
+    scan_query: 'site:jobs.bilibili.com "推荐算法" OR "搜索" OR "AI产品"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 华为
+    careers_url: https://career.huawei.com
+    scan_method: websearch
+    scan_query: 'site:career.huawei.com "昇腾" OR "盘古" OR "算法" OR "数据工程"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 小米
+    careers_url: https://hr.xiaomi.com
+    scan_method: websearch
+    scan_query: 'site:hr.xiaomi.com "大模型" OR "语音" OR "平台工程师"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 蚂蚁集团
+    careers_url: https://talent.antgroup.com
+    scan_method: websearch
+    scan_query: 'site:talent.antgroup.com "风控算法" OR "大模型" OR "AI产品经理"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 理想汽车
+    careers_url: https://jobs.lixiang.com
+    scan_method: websearch
+    scan_query: 'site:jobs.lixiang.com "自动驾驶" OR "算法" OR "大模型"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 小鹏汽车
+    careers_url: https://app.mokahr.com/social-recruitment/xiaopeng
+    scan_method: websearch
+    scan_query: 'site:mokahr.com/social-recruitment/xiaopeng "自动驾驶" OR "算法" OR "平台"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 蔚来
+    careers_url: https://nio.jobs.feishu.cn
+    scan_method: websearch
+    scan_query: 'site:jobs.feishu.cn "蔚来" "算法" OR "数据" OR "平台"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 智谱 AI
+    careers_url: https://zhipu-ai.jobs.feishu.cn
+    scan_method: websearch
+    scan_query: 'site:jobs.feishu.cn "智谱" "大模型" OR "Agent" OR "推理"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: DeepSeek
+    careers_url: https://deepseek.com
+    scan_method: websearch
+    scan_query: 'site:deepseek.com "招聘" OR "careers" OR "大模型"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: MiniMax
+    careers_url: https://www.minimaxi.com
+    scan_method: websearch
+    scan_query: 'site:minimaxi.com "招聘" OR "careers" OR "多模态" OR "Agent"'
+    enabled: true
+    market: cn
+    source_type: official
+
+  - name: 商汤科技
+    careers_url: https://hr.sensetime.com
+    scan_method: websearch
+    scan_query: 'site:sensetime.com "算法" OR "计算机视觉" OR "大模型"'
+    enabled: true
+    market: cn
+    source_type: official
